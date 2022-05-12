@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1, h2{
+  text-align: center;
+}
+
+.playerBox{
+  border: 1px solid black;
+  padding: 16px;
+  padding-top: 0px;
+  border-radius:10px;
+}
+.center{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
