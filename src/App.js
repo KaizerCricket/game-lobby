@@ -9,6 +9,7 @@ import { PlayersContext } from './contexts/PlayersContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Other from './Other';
+import LogIn from './components/LogIn';
 
 function App() {
 
@@ -21,6 +22,11 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={
+          <Container>
+            <LogIn/>
+          </Container>
+        }/>
+        <Route path='/lobby' element={
           <Container>
             <h1>Game Lobby</h1>
             <Grid container spacing={4} mt="10px">
