@@ -33,3 +33,9 @@ h1, h2{
   flex-direction: column;
   justify-content: space-around;
 }
+
+.btn{
+  padding: 30px;
+  text-align: center;
+  font-size:xx-large;
+}

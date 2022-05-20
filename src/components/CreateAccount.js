@@ -4,9 +4,9 @@ import {
 } from '@mui/material'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 
-const LogIn = () => {
+const CreateAccount = () => {
 
     const [email, setEmail] = React.useState('');
     const [password, setPass] = React.useState('');
@@ -21,7 +21,7 @@ const LogIn = () => {
 
     const auth = getAuth()
 
-    const signIn = () => signInWithEmailAndPassword(auth, email, password)
+    const signUp = () => createUserWithEmailAndPassword(auth, email, password)
                             .then((userCredential) => {
                                 // Signed in 
                                 const user = userCredential.user;
@@ -48,7 +48,7 @@ const LogIn = () => {
     return (
         <Container>
             <h1>
-                Log In
+                Create Account
             </h1>
             <Box className='logInBox'>
                 <TextField fullWidth id="outlined-required" label="Email Address"
@@ -58,13 +58,13 @@ const LogIn = () => {
                     onChange={changePass}
                 />
                 <Button variant='contained'
-                    onClick={signIn}
+                    onClick={signUp}
                 >
-                    Sign In
+                    Sign Up
                 </Button>
             </Box>
         </Container>
     )
 }
 
-export default LogIn
+export default CreateAccount
