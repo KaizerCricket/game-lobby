@@ -24,9 +24,9 @@ h1, h2{
 }
 
 .logInBox{
-  height: 200px;
+  height: 190px;
   border: 1px solid black;
-  padding: 16px;
+  padding: 14px;
   margin: 0px 200px;
   border-radius:10px;
   display: flex;
@@ -35,7 +35,16 @@ h1, h2{
 }
 
 .btn{
-  padding: 30px;
+  padding: 20px;
   text-align: center;
   font-size:xx-large;
+}
+
+.profilePic{
+  vertical-align: middle;
+  float: right;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  border: 3px solid black;
 }

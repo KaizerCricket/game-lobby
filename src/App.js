@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import { Box, Button, Container } from '@mui/material'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { getAuth, signOut } from 'firebase/auth'
+import { Box, Button, Container, Grid } from '@mui/material'
 import PlayerSelect from './components/PlayerSelect';
-import { Grid } from '@mui/material';
 import { PlayersContext } from './contexts/PlayersContext';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import Other from './Other';
 import LogIn from './components/LogIn';
 import CreateAccount from './components/CreateAccount'
-import { getAuth, signOut } from 'firebase/auth'
+import ProfilePicture from './components/ProfilePicture';
 
 function App() {
 
@@ -24,7 +21,7 @@ function App() {
     signOut(auth)
     setUID('null')
   }
-  
+
   useEffect(() => {
     console.log(currentUID);
   }, [currentUID]);
@@ -38,12 +35,14 @@ function App() {
             <PlayersContext.Provider value={{ currentUID, setUID }}>
               <CreateAccount />
               <LogIn />
+              <Box className='btn'>
+                <Button variant='contained' component={Link} to='/lobby'>
+                  Enter
+                </Button>
+              </Box>
+              <ProfilePicture />
             </PlayersContext.Provider>
-            <Box className='btn'>
-              <Button variant='contained' component={Link} to='/lobby'>
-                Enter
-              </Button>
-            </Box>
+
           </Container>
         } />
         <Route path='/lobby' element={
@@ -73,7 +72,6 @@ function App() {
           </Container>
         } />
 
-        <Route path='/other' element={<Other />} />
       </Routes>
     </Router>
   );
