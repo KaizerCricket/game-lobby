@@ -1,15 +1,17 @@
-import React, { Fragment } from 'react'
+import React, { useState, useContext } from 'react'
 import {
     Box, Button, Container, TextField
 } from '@mui/material'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { PlayersContext } from '../contexts/PlayersContext'
 
 const LogIn = () => {
 
-    const [email, setEmail] = React.useState('');
-    const [password, setPass] = React.useState('');
+    const { currentUID, setUID } = useContext(PlayersContext);
+    const [email, setEmail] = useState('');
+    const [password, setPass] = useState('');
 
     const changeEmail = (e) => {
         setEmail(e.target.value);
@@ -25,13 +27,13 @@ const LogIn = () => {
                             .then((userCredential) => {
                                 // Signed in 
                                 const user = userCredential.user;
-                                console.log("pizza!");
+                                setUID(user.uid);
                                 // ...
                             })
                             .catch((error) => {
                                 const errorCode = error.code;
                                 const errorMessage = error.message;
-                                console.log(errorMessage);
+                                console.log(errorMessage, errorCode);
                             });
 
     /*
